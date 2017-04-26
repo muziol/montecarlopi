@@ -16,11 +16,7 @@ document.getElementById('start').addEventListener("click", function(){
     var input = document.getElementById('stop').value;
 	total = 0;
 	inside = 0;
-	console.log(isInt(input) );
-	console.log(input);
-	console.log(document.getElementsByTagName('svg')[0]);
-	//clear();
-	console.log(document.getElementsByTagName('svg')[0]);
+	clear();
 	if (isInt(input) == false ) alert("value must be integer")
     else if (input > 0) {
 		stop_after = input;
@@ -38,9 +34,11 @@ document.getElementById('start').addEventListener("click", function(){
 });	
 
 function clear() {
-	var svg = document.getElementsByTagName('svg')[0];
-	//svg.selectAll("*").remove();
-	svg.remove();
+    var svg = document.getElementsByTagName('svg')[0];
+    //clear all nodes from svg
+    while (svg.firstChild) {
+        svg.removeChild(svg.firstChild);
+    }
 }
 
 var svg = document.getElementsByTagName('svg')[0];
@@ -79,6 +77,10 @@ function tick(){
 	// To accelerate things, we add more points per 'tick' as time goes on
     var pointsToAdd = 1;
     if(total > 0 && perform_acceleration) pointsToAdd = Math.pow((Math.floor(Math.log10(total))+1),3);
+    //
+    if(total + pointsToAdd > stop_after) {
+        pointsToAdd = stop_after - total;
+    } 
     // add one or more points
     for(var i = 0; i < pointsToAdd; i++) addPoint();
     // Update output

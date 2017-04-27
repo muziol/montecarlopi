@@ -8,14 +8,16 @@
   </head>
 
   <body>
-    <svg width="600" height="600"></svg>
+    <svg width="600" height="600">
+      <-!circle cx="300" cy="300" r="300" stroke="blue" d="M5 60 l215 0" />
+    </svg>
 
     <div id="output">
       <input type="text" id="stop" value="" placeholder="Default 100 000">
       <input type="button" id="start" value="start" >
-      <p>Points drawn: <span id="total">0</span></p>
-      <p>Points inside: <span id="inside">0</span></p>
-      <p>Pi: <span id="pi">0</span></p>
+      <p>Points drawn: <span id="total"></span></p>
+      <p>Points inside: <span id="inside"></span></p>
+      <p>Pi: <span id="pi"></span></p>
     </div>
 
     <script type="application/javascript" src="script.js" ></script>

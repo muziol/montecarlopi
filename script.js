@@ -16,7 +16,9 @@ document.getElementById('start').addEventListener("click", function(){
     var input = document.getElementById('stop').value;
 	total = 0;
 	inside = 0;
+    //clear and draw circle
 	clear();
+    circle();
 	if (isInt(input) == false ) alert("value must be integer")
     else if (input > 0) {
 		stop_after = input;
@@ -39,6 +41,22 @@ function clear() {
     while (svg.firstChild) {
         svg.removeChild(svg.firstChild);
     }
+}
+
+function circle() {
+    var svgNS = "http://www.w3.org/2000/svg";  
+
+
+    var myCircle = document.createElementNS(svgNS,"circle"); //to create a circle. for rectangle use "rectangle"
+    myCircle.setAttributeNS(null,"id","mycircle");
+    myCircle.setAttributeNS(null,"cx",300);
+    myCircle.setAttributeNS(null,"cy",300);
+    myCircle.setAttributeNS(null,"r",300);
+    myCircle.setAttributeNS(null,"style","stroke:rgb(0,0,255);stroke-width:1;");
+    var svg = document.getElementsByTagName('svg')[0];
+    svg.appendChild(myCircle);   
+    
+
 }
 
 var svg = document.getElementsByTagName('svg')[0];
